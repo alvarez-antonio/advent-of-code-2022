@@ -41,3 +41,4 @@ executable aoc2022
     other-modules:
         Day01
         Day02
+        Day03
