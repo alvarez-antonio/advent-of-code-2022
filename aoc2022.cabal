@@ -40,3 +40,4 @@ executable aoc2022
     default-language: Haskell2010
     other-modules:
         Day01
+        Day02

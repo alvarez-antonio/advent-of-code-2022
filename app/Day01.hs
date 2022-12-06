@@ -1,16 +1,24 @@
 module Day01 (part1, part2) where
 
 import Data.List (sort)
+import Data.List.Split (splitOn)
 
-part1 :: [[Int]] -> Int
-part1 convertedSplits = do
-  let sums = map sum convertedSplits
+parseElfInventories fileLines = do
+  let inventoriesRaw = splitOn [""] fileLines
+  let inventories = map (map read) inventoriesRaw
+  inventories
+
+part1 :: [String] -> Int
+part1 fileLines = do
+  let inventory = parseElfInventories fileLines
+  let sums = map sum inventory
   let bigElf = foldr max 0 sums
   bigElf
 
-part2 :: [[Int]] -> Int
-part2 convertedSplits = do
-  let sums = map sum convertedSplits
+part2 :: [String] -> Int
+part2 fileLines = do
+  let inventory = parseElfInventories fileLines
+  let sums = map sum inventory
   let sorted = reverse (sort sums)
   let final = sum (take 3 sorted)
   final
