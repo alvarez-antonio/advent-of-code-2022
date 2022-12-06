@@ -1,10 +1,9 @@
 module Main where
 
-import Data.List (intersect, nub)
-import Data.List.Split (chunksOf)
 import Day01
 import Day02
 import Day03
+import Day04
 import System.Environment (getArgs)
 import Text.Printf
 
@@ -15,6 +14,8 @@ solution 2 1 = Day02.part1
 solution 2 2 = Day02.part2
 solution 3 1 = Day03.part1
 solution 3 2 = Day03.part2
+solution 4 1 = Day04.part1
+solution 4 2 = Day04.part2
 
 main :: IO ()
 main = do
@@ -23,7 +24,4 @@ main = do
       part = (read :: String -> Int) (last args)
   fileStr <- readFile (printf "inputs/Day%02d-input" day)
   let fileLines = lines fileStr
-
-  let result = solution day part fileLines
-
-  print result
+  print (solution day part fileLines)
