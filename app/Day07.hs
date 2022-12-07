@@ -1,11 +1,12 @@
 module Day07 (part1, part2) where
 
 import Data.Function (on)
-import Data.HashMap.Strict (HashMap, empty, findWithDefault, insert, insertWith, toList)
-import Data.List (intercalate, sortBy)
+import Data.HashMap.Strict (HashMap, empty, findWithDefault, insert, insertWith, lookup, toList)
+import Data.List (find, intercalate, sort, sortBy)
 import Data.List.Split (splitOn)
-import Data.Maybe (fromMaybe)
+import Data.Maybe (fromJust, fromMaybe)
 import Debug.Trace (trace)
+import Foreign (free)
 
 run :: String -> HashMap String Int -> [String] -> (HashMap String Int, [String])
 run "$ cd .." directories currentDir = (directories, init currentDir)
@@ -42,4 +43,9 @@ part1 fileLines = do
       totalSize = trace ("Small Directories: " ++ show (sortBy (compare `on` fst) smallDirs)) sum $ map snd smallDirs
   totalSize
 
-part2 filelines = 1
+part2 fileLines = do
+  let directories = process fileLines empty []
+      totalSize = Data.HashMap.Strict.lookup "/" directories
+      sortedSizes = sort $ map snd (toList $ directories)
+      freeSpace = 70000000 - sum totalSize
+  trace ("Free: " ++ show freeSpace) fromJust $ find (> 30000000 - freeSpace) sortedSizes
