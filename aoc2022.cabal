@@ -37,7 +37,9 @@ executable aoc2022
         base ^>=4.16.3.0,
         split,
         containers,
-        unordered-containers
+        unordered-containers,
+        matrix,
+        vector
     hs-source-dirs:   app
     default-language: Haskell2010
     other-modules:
@@ -48,3 +50,4 @@ executable aoc2022
         Day05
         Day06
         Day07
+        Day08
