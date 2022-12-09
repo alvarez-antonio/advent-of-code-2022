@@ -8,6 +8,7 @@ import Day05
 import Day06
 import Day07
 import Day08
+import Day09
 import System.Environment (getArgs)
 import Text.Printf
 
@@ -28,6 +29,8 @@ solution 7 1 = Day07.part1
 solution 7 2 = Day07.part2
 solution 8 1 = Day08.part1
 solution 8 2 = Day08.part2
+solution 9 1 = Day09.part1
+solution 9 2 = Day09.part2
 
 main :: IO ()
 main = do
